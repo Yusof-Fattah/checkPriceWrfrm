@@ -16,4 +16,5 @@ jobs:
         uses: actions/setup-node@v3
         with: 
           node-version: 20
-      # Add further steps here (e.g., install dependencies, run tests)
+      - run: npm ci
+      - run: npm test
