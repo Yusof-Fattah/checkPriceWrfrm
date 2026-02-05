@@ -8,13 +8,14 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    container:
-      image: node:20
+    # If using a container, ensure the shell/node is ready
+    container: node:20
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Node
-        uses: actions/setup-node@v3
-        with: 
-          node-version: 20
-      - run: npm ci
-      - run: npm test
+      - name: Checkout code
+        uses: actions/checkout@v4 # Updated to v4 for better compatibility
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
